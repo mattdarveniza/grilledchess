@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var scene: SKScene {
         let scene = BoardScene()
-        scene.size = CGSize(width: 256, height: 256)
+        scene.size = CGSize(width: 300, height: 300)
         scene.scaleMode = .resizeFill
         scene.name = "board"
         scene.backgroundColor = .green
@@ -22,7 +22,7 @@ struct ContentView: View {
     
     var body: some View {
         SpriteView(scene: scene)
-            .frame(width: 256, height: 256)
+            .frame(width: 300, height: 300)
             .background(Color.red)
     }
 }

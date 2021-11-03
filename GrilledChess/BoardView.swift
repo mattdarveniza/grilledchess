@@ -51,6 +51,7 @@ class BoardScene: SKScene {
             height: self.size.height / CGFloat(rows)
         )
         
+        // TODO: Figure out what the actual algorithm here is
         let xOffset: CGFloat = 16
         let yOffset: CGFloat = 16
         
