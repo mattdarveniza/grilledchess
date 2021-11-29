@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C97B6D32274274400041F93C /* MoveGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B6D31274274400041F93C /* MoveGenerator.swift */; };
+		C97B6D34274274D30041F93C /* chess.js in Resources */ = {isa = PBXBuildFile; fileRef = C97B6D33274274D20041F93C /* chess.js */; };
 		C9EA6DFB272D184C0044C82E /* GrilledChessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA6DFA272D184C0044C82E /* GrilledChessApp.swift */; };
 		C9EA6DFD272D184C0044C82E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA6DFC272D184C0044C82E /* ContentView.swift */; };
 		C9EA6DFF272D184E0044C82E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EA6DFE272D184E0044C82E /* Assets.xcassets */; };
 		C9EA6E02272D184E0044C82E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EA6E01272D184E0044C82E /* Preview Assets.xcassets */; };
-		C9EA6E0B272D1ACD0044C82E /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA6E0A272D1ACD0044C82E /* BoardView.swift */; };
+		C9EA6E0B272D1ACD0044C82E /* BoardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA6E0A272D1ACD0044C82E /* BoardScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C97B6D31274274400041F93C /* MoveGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveGenerator.swift; sourceTree = "<group>"; };
+		C97B6D33274274D20041F93C /* chess.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = chess.js; path = ../../../Downloads/chess.js; sourceTree = "<group>"; };
 		C9EA6DF7272D184C0044C82E /* GrilledChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrilledChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9EA6DFA272D184C0044C82E /* GrilledChessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrilledChessApp.swift; sourceTree = "<group>"; };
 		C9EA6DFC272D184C0044C82E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C9EA6DFE272D184E0044C82E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9EA6E01272D184E0044C82E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C9EA6E0A272D1ACD0044C82E /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		C9EA6E0A272D1ACD0044C82E /* BoardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +57,11 @@
 		C9EA6DF9272D184C0044C82E /* GrilledChess */ = {
 			isa = PBXGroup;
 			children = (
+				C97B6D31274274400041F93C /* MoveGenerator.swift */,
 				C9EA6DFA272D184C0044C82E /* GrilledChessApp.swift */,
 				C9EA6DFC272D184C0044C82E /* ContentView.swift */,
-				C9EA6E0A272D1ACD0044C82E /* BoardView.swift */,
+				C9EA6E0A272D1ACD0044C82E /* BoardScene.swift */,
+				C97B6D33274274D20041F93C /* chess.js */,
 				C9EA6DFE272D184E0044C82E /* Assets.xcassets */,
 				C9EA6E00272D184E0044C82E /* Preview Content */,
 			);
@@ -129,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9EA6E02272D184E0044C82E /* Preview Assets.xcassets in Resources */,
+				C97B6D34274274D30041F93C /* chess.js in Resources */,
 				C9EA6DFF272D184E0044C82E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,7 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9EA6E0B272D1ACD0044C82E /* BoardView.swift in Sources */,
+				C9EA6E0B272D1ACD0044C82E /* BoardScene.swift in Sources */,
+				C97B6D32274274400041F93C /* MoveGenerator.swift in Sources */,
 				C9EA6DFD272D184C0044C82E /* ContentView.swift in Sources */,
 				C9EA6DFB272D184C0044C82E /* GrilledChessApp.swift in Sources */,
 			);
