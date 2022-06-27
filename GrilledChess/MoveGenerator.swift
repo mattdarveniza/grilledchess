@@ -20,9 +20,10 @@ struct Move: Decodable {
         case w, b
     }
     
-    enum Flags: String, Decodable {
-        case n, b, e, c, p, k, q
-    }
+    // NOTE: This could be any _combination_ of these flags, not just an individual one
+//    enum Flags: String, Decodable {
+//        case n, b, e, c, p, k, q
+//    }
     
     enum Piece: String, Decodable {
         case p, r, n, b, k, q
@@ -32,12 +33,16 @@ struct Move: Decodable {
     let to: String
     let san: String
     let color: Color
-    let flags: Flags
     let piece: Piece
+    
+    let flags: String
+    let captured: String?
+    let promoted: String?
 }
 
 class MoveGenerator {
     let context = JSContext()
+    let decoder = JSONDecoder()
     
     init(_ gameState: String) {
         guard let chessJSPath = Bundle.main.path(forResource: "chess", ofType: "js") else {
@@ -56,13 +61,18 @@ class MoveGenerator {
     }
     
     func moves(for square: String) -> [Move] {
-        let result = context?.evaluateScript("JSON.stringify(chess.moves({ square: '\(square)', verbose: true }))").toString()
-        let parsed = try! JSONDecoder().decode([Move].self, from: result!.data(using: .utf8)!)
-        return parsed
+        let result = context?.evaluateScript("JSON.stringify(chess.moves({ square: '\(square)', verbose: true }))")
+        return parseJSResult(value: result)
     }
     
-    func move(to: String) {
-        context?.evaluateScript("chess.move('\(to)')")
+    func move(to: String) -> Move {
+        let result = context?.evaluateScript("JSON.stringify(chess.move('\(to)'))")
+        return parseJSResult(value: result)
+    }
+    
+    
+    private func parseJSResult<T: Decodable>(value: JSValue!) -> T {
+        return try! decoder.decode(T.self, from: value.toString().data(using: .utf8)!)
     }
     
     func board() -> BoardState {
