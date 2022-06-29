@@ -57,7 +57,8 @@ class MoveGenerator {
             print("could not parse chess.js file")
         }
         
-        context?.evaluateScript("var chess = Chess(\(gameState))")
+        context?.evaluateScript("var chess = Chess('\(gameState)')")
+        context?.evaluateScript("chess !== undefined")
     }
     
     func moves(for square: String) -> [Move] {

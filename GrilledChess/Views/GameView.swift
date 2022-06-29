@@ -8,18 +8,17 @@
 import SwiftUI
 import SpriteKit
 
-struct ContentView: View {
-    
+struct GameView: View {
     var scene: SKScene {
-        let scene = BoardScene()
+        let scene = GameScene()
         scene.size = CGSize(width: 300, height: 300)
         scene.scaleMode = .resizeFill
         scene.name = "board"
         scene.backgroundColor = .green
-        
+
         return scene
     }
-    
+
     var body: some View {
         SpriteView(scene: scene)
             .frame(width: 300, height: 300)
@@ -27,8 +26,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
