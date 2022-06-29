@@ -54,7 +54,7 @@ final class LichessAPI: ObservableObject {
         return request
     }
     
-    func loadGames(completion: @escaping (PlayedGame) -> Void) {
+    func loadGames() -> URLSessionDataTask {
         let request = getRequest(path: "account/playing");
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
@@ -72,5 +72,6 @@ final class LichessAPI: ObservableObject {
             }
         }
         task.resume()
+        return task
     }
 }
