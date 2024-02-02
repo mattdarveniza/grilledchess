@@ -9,27 +9,34 @@ import SwiftUI
 import SpriteKit
 
 struct ContentView: View {
-    @ObservedObject var api = LichessAPI()
+    @ObservedObject var gamesApi = LichessAPI("account/playing"){ (response: NowPlayingResponse) in
+        let games = response.nowPlaying
+        return games.filter { game in game.speed == .correspondence }
+    }
     
     var body: some View {
-        GamesList(games: api.games)
-            .onAppear { let _ = api.loadGames() }
-//        GameRow(game: PlayedGame(
-//            gameId: "abc",
-//            fullId: "abc",
-//            color: PlayedGame.Color.white,
-//            fen: "r3kb1r/pp1nqppp/2p2n2/4p3/2BPP1b1/1QP2N2/PP4PP/RNB1K2R w KQkq - 3 9",
-//            hasMoved: true,
-//            isMyTurn: true,
-//            lastMove: "d8e7",
-//            opponent: Opponent(id: "foo", rating: 1500, username: "foo"),
-//            secondsLeft: 60 * 60 * 12 + 5 * 60 + 30 // 12h 5m 30s
-//        ))
+        NavigationView {
+            switch gamesApi.state {
+            case .idle:
+                Color.clear.onAppear(perform: gamesApi.load)
+            case .loading:
+                ProgressView()
+            case .failed:
+                VStack {
+                    Text("An error occured")
+                    Button(action: gamesApi.load) {
+                        Text("Reload")
+                    }
+                }
+            case .loaded(let games):
+                GamesList(games: games)
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(gamesApi: LichessAPI(state: .loaded(mockGames)))
     }
 }

@@ -14,8 +14,8 @@ struct GameRow: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(game.opponent.username)
-                    .font(.title)
+                Text("\(game.opponent.username) (\(game.opponent.rating))")
+                    .font(.headline)
                     .multilineTextAlignment(.leading)
                 HStack {
                     Text(game.isMyTurn ? "Your Turn" : "Their Turn")
@@ -38,16 +38,6 @@ struct GameRow: View {
 
 struct GameRow_Previews: PreviewProvider {
     static var previews: some View {
-        GameRow(game: PlayedGame(
-            gameId: "abc",
-            fullId: "abc",
-            color: PlayedGame.Color.white,
-            fen: "r3kb1r/pp1nqppp/2p2n2/4p3/2BPP1b1/1QP2N2/PP4PP/RNB1K2R w KQkq - 3 9",
-            hasMoved: true,
-            isMyTurn: true,
-            lastMove: "d8e7",
-            opponent: Opponent(id: "foo", rating: 1500, username: "foo"),
-            secondsLeft: 60 * 60 * 12 + 5 * 60 + 30 // 12h 5m 30s
-        )).previewLayout(.fixed(width: 300, height: 70))
+        GameRow(game: mockGames[0]).previewLayout(.fixed(width: 300, height: 70))
     }
 }
